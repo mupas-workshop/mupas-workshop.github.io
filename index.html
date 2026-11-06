@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MuPAS — Musical Perspectives on Animal Sounds</title>
-<meta name="description" content="MuPAS is a satellite workshop of ISMIR bridging Music Information Retrieval and computational bioacoustics.">
+<meta name="description" content="MuPAS is a satellite workshop of ISMIR 2027 bridging Music Information Retrieval and computational bioacoustics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -99,6 +99,9 @@
   ul.points li:last-child { border-bottom: 0; }
   ul.points strong { display: block; font: 600 17px/1.3 var(--display); color: var(--ink); margin-bottom: 4px; }
 
+  .prose p { color: var(--ink-soft); margin: 0 0 18px; max-width: 60ch; }
+  .prose p.lead { font: 400 21px/1.45 var(--display); color: var(--ink); letter-spacing: -0.01em; margin-bottom: 24px; }
+
   /* Organisers */
   .organisers { padding: 48px 0; background: var(--tint); border-top: 1px solid var(--rule); }
   .organisers .wrap { display: flex; gap: 32px; align-items: baseline; flex-wrap: wrap; }
@@ -143,7 +146,7 @@
 <main>
   <div class="hero">
     <div class="wrap hero-head">
-      <p class="kicker">A satellite workshop of ISMIR</p>
+      <p class="kicker">A satellite workshop of ISMIR 2027</p>
       <h1>Musical perspectives on animal sounds</h1>
       <p class="sub">Bridging Music Information Retrieval and computational bioacoustics.</p>
     </div>
@@ -160,13 +163,13 @@
           <g class="m"><ellipse cx="46" cy="30" rx="3.8" ry="2.7" transform="rotate(-20 46 30)"/><path d="M49.6 29V8C51 12 56 13 55.5 19"/></g>
         </svg>
         <p class="num">01</p>
-        <h2>Why music?</h2>
+        <h2>About the workshop</h2>
       </div>
-      <ul class="points">
-        <li><strong>A field built on exchange</strong>Acousticians, field recordists, musicologists, linguists and machine learning researchers all study animal sounds.</li>
-        <li><strong>A missing voice</strong>Computational bioacoustics has drawn mostly on speech science and signal processing. Music research has stayed at the edge.</li>
-        <li><strong>Our aim</strong>Take stock of what music processing has already contributed, and bring the MIR and bioacoustics communities closer together.</li>
-      </ul>
+      <div class="prose">
+        <p class="lead">MuPAS is a workshop that brings together researchers in Music Information Retrieval and computational bioacoustics to share methods, open problems and data.</p>
+        <p>The study of animal sounds has always drawn on many disciplines, from acoustics and field recording to linguistics, musicology and machine learning. Yet its computational tools have come mostly from speech science and general signal processing, while music research has stayed at the edge of the conversation.</p>
+        <p>We think music has more to offer. Like bioacoustics, MIR works with scarce labels and highly variable sound, and it has mature tools for melody, rhythm and structure. The workshop takes stock of what music processing has already contributed to the field, and aims to build a lasting community between the two.</p>
+      </div>
     </div>
   </section>
 
@@ -231,7 +234,7 @@
 <footer>
   <div class="wrap">
     <span>MuPAS · Musical Perspectives on Animal Sounds</span>
-    <span>A satellite workshop of ISMIR</span>
+    <span>A satellite workshop of ISMIR 2027</span>
   </div>
 </footer>
 
