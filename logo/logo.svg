@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <rect width="120" height="120" fill="#f5f3ef"/>
+  <g fill="none" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(60 60) scale(0.9) translate(-63.5 -51.0)">
+    <!-- songbird, head raised, beak open: one continuous outline -->
+    <g stroke="#16181d">
+      <path d="M40 42C41 32 54.6 26.7 61 24.5L77 19L63 30.5L76 37C70.5 37 66 39 66 43.5C66 49 70 57.5 60 67C52 75 34 79.5 16 84C28.5 72 38.5 56 40 42Z"/>
+      <path d="M48 43C47 54 43 62 35 69.5"/>
+      <path d="M47 74.8L46 90M54 71.4L55 90"/>
+      <path d="M26 90H72"/>
+    </g>
+    <circle cx="54" cy="33" r="2.2" fill="#16181d"/>
+    <!-- two notes leaving the beak; stems sit flush with the heads' right edge -->
+    <g stroke="#129c7b">
+      <path d="M86.05 41.15V22.15C86.65 27.15 91.65 27.75 90.45 33.15"/><ellipse cx="82.5" cy="42" rx="5.4" ry="3.9" transform="rotate(-20 82.5 42)" stroke="none" fill="#129c7b"/>
+      <path d="M105.05 29.15V10.15C105.65 15.15 110.65 15.75 109.45 21.15"/><ellipse cx="101.5" cy="30" rx="5.4" ry="3.9" transform="rotate(-20 101.5 30)" stroke="none" fill="#129c7b"/>
+    </g>
+  </g>
+</svg>
