@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Music&text=%F0%9D%84%9E&display=block" rel="stylesheet">
 <style>
   :root {
     --bg: #ffffff;
@@ -64,8 +65,8 @@
 
   .score { position: relative; background: var(--tint); margin-top: 64px; }
   #score { width: 100%; height: 260px; display: block; }
-  .clef { position: absolute; left: 24px; fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
-  .clef circle { fill: var(--ink); stroke: none; }
+  .clef { position: absolute; left: 24px; overflow: visible; }
+  .clef text { font-family: "Noto Music", serif; fill: var(--ink); stroke: none; }
   .staff line { stroke: rgba(22, 24, 29, 0.24); stroke-width: 1; }
   .contour { fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; }
   .contour.harm { stroke: var(--accent); stroke-width: 1.4; opacity: .75; }
@@ -159,10 +160,9 @@
     </div>
     <div class="score" aria-hidden="true">
       <svg id="score" preserveAspectRatio="none"></svg>
-      <!-- Treble clef in staff units: lines at y = 0, 10, 20, 30, 40; the curl wraps the G line (y = 30) -->
-      <svg class="clef" viewBox="0 -16 28 74">
-        <path vector-effect="non-scaling-stroke" d="M15.5 31C11.5 31.5 10.5 26.5 14 25.5C18.5 24.2 21.5 28.5 20.5 33C19.5 38 13.5 40.5 9 38C3.5 35 3 27 8.5 21C12.5 16.5 18 13 20 6C21.5 0 20 -9.5 16.5 -10.5C13.5 -11.5 12 -6 12.3 -1C12.5 4 13.5 8 14.2 13L17.8 46.5C18.4 52 14.5 54.5 11 53"/>
-        <circle cx="11.5" cy="50.5" r="1.6"/>
+      <!-- Treble clef in staff units: lines at y = 0, 10, 20, 30, 40; the font puts its baseline on the bottom line and 1em = staff height, so the curl wraps G (y = 30) -->
+      <svg class="clef" viewBox="0 -16 30 74">
+        <text x="1" y="40" font-size="40">&#x1D11E;</text>
       </svg>
     </div>
   </div>
@@ -282,8 +282,8 @@
     // Start the song just after the clef, whatever the screen width
     const clef = document.querySelector('.clef');
     const k = svg.clientHeight / H, gap = 40 * k;
-    Object.assign(clef.style, { top: (50 * k - 1.6 * gap) + 'px', height: (7.4 * gap) + 'px', width: (2.8 * gap) + 'px' });
-    let x = (parseFloat(getComputedStyle(clef).left) + 2.8 * gap + 16) / svg.clientWidth * W;
+    Object.assign(clef.style, { top: (50 * k - 1.6 * gap) + 'px', height: (7.4 * gap) + 'px', width: (3 * gap) + 'px' });
+    let x = (parseFloat(getComputedStyle(clef).left) + 3 * gap + 16) / svg.clientWidth * W;
     while (x < W - 30) {
       const w = 30 + rnd() * 70;
       const kind = rnd();
