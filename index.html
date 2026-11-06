@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MuPAS — Musical Perspectives on Animal Sounds</title>
+<meta name="description" content="MuPAS is a satellite workshop of ISMIR bridging Music Information Retrieval and computational bioacoustics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --tint: #f5f3ef;
+    --ink: #16181d;
+    --ink-soft: #555a63;
+    --accent: #e0532b;
+    --rule: rgba(22, 24, 29, 0.12);
+    --display: "Inter", "Helvetica Neue", Arial, sans-serif;
+    --text: "Inter", system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 16.5px/1.6 var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .mark { font: 400 16px/1.2 var(--display); text-decoration: none; color: var(--ink-soft); }
+  .mark b { font-weight: 600; color: var(--ink); letter-spacing: -0.01em; margin-right: 10px; }
+  nav { display: flex; gap: 28px; font-family: var(--display); }
+  nav a { font-size: 14.5px; text-decoration: none; color: var(--ink-soft); }
+  nav a:hover { color: var(--ink); }
+
+  /* Hero */
+  .hero-head { padding-top: 96px; padding-bottom: 16px; }
+  .kicker {
+    font: 500 13px/1 var(--display); letter-spacing: .08em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 24px;
+  }
+  h1 {
+    font: 500 clamp(40px, 6vw, 78px)/1.04 var(--display);
+    letter-spacing: -0.035em;
+    margin: 0; max-width: 13ch;
+  }
+  .sub {
+    font: 400 clamp(18px, 1.8vw, 21px)/1.45 var(--text);
+    margin: 24px 0 0; max-width: 40ch; color: var(--ink-soft);
+  }
+
+  .score { background: var(--tint); margin-top: 64px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .score svg { width: 100%; height: 260px; display: block; }
+  .staff line { stroke: var(--rule); stroke-width: 1; }
+  .contour { fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; }
+  .contour.harm { stroke: var(--accent); stroke-width: 1.4; opacity: .75; }
+  .contour { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: draw 2.4s cubic-bezier(.4,.1,.2,1) forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) { .contour { animation: none; stroke-dashoffset: 0; } }
+
+  /* Sections */
+  section { padding: 96px 0; }
+  section + section { border-top: 1px solid var(--rule); }
+  .grid { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; }
+  .num { font: 500 13px/1 var(--display); color: var(--accent); letter-spacing: .06em; margin: 0 0 16px; }
+  .icon { display: block; width: 76px; height: auto; margin: 0 0 24px; overflow: visible;
+    fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .icon .dot { fill: var(--ink); stroke: none; }
+  .icon .m { stroke: var(--accent); }
+  h2 {
+    font: 500 clamp(28px, 3.2vw, 40px)/1.12 var(--display);
+    letter-spacing: -0.025em; margin: 0;
+  }
+
+  ul.points { list-style: none; margin: 0; padding: 0; counter-reset: p; }
+  ul.points li {
+    position: relative; padding: 18px 0 18px 28px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+  }
+  ul.points li:first-child { padding-top: 0; }
+  ul.points li::before {
+    content: ""; position: absolute; left: 0; top: 30px;
+    width: 14px; height: 2px; background: var(--accent);
+  }
+  ul.points li:first-child::before { top: 12px; }
+  ul.points li:last-child { border-bottom: 0; }
+  ul.points strong { display: block; font: 600 17px/1.3 var(--display); color: var(--ink); margin-bottom: 4px; }
+
+  /* Organisers */
+  .organisers { padding: 48px 0; background: var(--tint); border-top: 1px solid var(--rule); }
+  .organisers .wrap { display: flex; gap: 32px; align-items: baseline; flex-wrap: wrap; }
+  .organisers h3 { font: 500 13px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; margin: 0; color: var(--ink-soft); }
+  .organisers ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 28px; font-size: 14px; }
+  .organisers li { color: var(--ink-soft); }
+  .organisers li b { font-family: var(--display); font-weight: 500; color: var(--ink); margin-right: 6px; }
+
+  footer { font: 400 13px/1.4 var(--display); color: var(--ink-soft); border-top: 1px solid var(--rule); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 24px; padding-bottom: 28px; }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 860px) {
+    .wrap { padding: 0 16px; }
+    nav { display: none; }
+    .mark { font-size: 13.5px; }
+    .hero-head { padding-top: 56px; }
+    .score { margin-top: 40px; }
+    .score svg { height: 180px; }
+    section { padding: 64px 0; }
+    .grid { grid-template-columns: 1fr; gap: 28px; }
+    .organisers .wrap { flex-direction: column; gap: 16px; }
+    .organisers ul { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap">
+    <a class="mark" href="#top"><b>MuPAS</b>Musical Perspectives on Animal Sounds</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#intersection">Intersection</a>
+      <a href="#programme">Programme</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap hero-head">
+      <p class="kicker">A satellite workshop of ISMIR</p>
+      <h1>Musical perspectives on animal sounds</h1>
+      <p class="sub">Bridging Music Information Retrieval and computational bioacoustics.</p>
+    </div>
+    <div class="score" aria-hidden="true"><svg id="score" preserveAspectRatio="none"></svg></div>
+  </div>
+
+  <section id="about">
+    <div class="wrap grid reveal">
+      <div>
+        <svg class="icon" viewBox="0 0 64 44" aria-hidden="true">
+          <path d="M10 28C10 20 15 15 21 15C25 15 28 18 28 22C28 29 22 33 15 33H7L11 29"/>
+          <path d="M28 20L33 21.5L28 23"/><circle class="dot" cx="23" cy="19.5" r="1"/>
+          <path d="M14 25C17 27.5 21 27.5 23.5 24.5"/><path d="M16 33L15 38M20 33L21 38"/><path d="M6 38H31"/>
+          <g class="m"><ellipse cx="46" cy="30" rx="3.8" ry="2.7" transform="rotate(-20 46 30)"/><path d="M49.6 29V8C51 12 56 13 55.5 19"/></g>
+        </svg>
+        <p class="num">01</p>
+        <h2>Why music?</h2>
+      </div>
+      <ul class="points">
+        <li><strong>A field built on exchange</strong>Acousticians, field recordists, musicologists, linguists and machine learning researchers all study animal sounds.</li>
+        <li><strong>A missing voice</strong>Computational bioacoustics has drawn mostly on speech science and signal processing. Music research has stayed at the edge.</li>
+        <li><strong>Our aim</strong>Take stock of what music processing has already contributed, and bring the MIR and bioacoustics communities closer together.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="intersection">
+    <div class="wrap grid reveal">
+      <div>
+        <svg class="icon" viewBox="0 0 64 44" aria-hidden="true">
+          <path d="M4 27C4 20 11 16 21 16C30 16 34 21 36 25C38 28 41 27 43 23C41 30 33 35 21 35C11 35 4 32 4 27Z"/>
+          <path d="M43 23C41 19 38 17 35 16.5M43 23C45 19 48 17 52 17"/>
+          <circle class="dot" cx="10" cy="24" r="1"/><path d="M8 30C14 32.5 24 32.5 30 30.5"/>
+          <path d="M15 16V11M15 11C15 8.5 13 7 11 6.5M15 11C15 8.5 17 7 19 6.5"/>
+          <g class="m"><path d="M57 6V20C57 24.5 63 24.5 63 20V6"/><path d="M60 23.5V38"/></g>
+        </svg>
+        <p class="num">02</p>
+        <h2>Where music meets animal communication</h2>
+      </div>
+      <ul class="points">
+        <li><strong>Shared problems</strong>Scarce annotations, weak supervision, ambiguous segmentation and highly variable recording conditions.</li>
+        <li><strong>Variation like music's</strong>Differences across species can resemble differences across instruments and genres more than across human languages.</li>
+        <li><strong>Tools MIR already has</strong>Melodic contour analysis, beat and meter tracking, source separation and self-supervised music representations.</li>
+        <li><strong>The question of song</strong>A musical lens on animal communication speaks to biomusicology, musicality across species and the origins of music.</li>
+        <li><strong>Shared data</strong>Datasets that cross both communities, giving out-of-domain benchmarks and common evaluation practices.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="programme">
+    <div class="wrap grid reveal">
+      <div>
+        <svg class="icon" viewBox="0 0 64 44" aria-hidden="true">
+          <path d="M4 34C4 24 10 18 18 18C26 18 32 24 32 34"/>
+          <circle cx="12" cy="16" r="3.5"/><circle cx="24" cy="16" r="3.5"/>
+          <circle class="dot" cx="12" cy="16" r="1"/><circle class="dot" cx="24" cy="16" r="1"/>
+          <path d="M12 25C15.5 27.5 20.5 27.5 24 25"/><path d="M2 34H12M24 34H34"/><path d="M11 34L13 30M25 34L23 30"/>
+          <g class="m"><rect x="45" y="5" width="9" height="16" rx="4.5"/><path d="M41 15C41 26 58 26 58 15"/><path d="M49.5 24V34M44 34H55"/></g>
+        </svg>
+        <p class="num">03</p>
+        <h2>Programme</h2>
+      </div>
+      <ul class="points">
+        <li><strong>Keynotes</strong>Invited speakers from music research and from animal communication, one perspective from each side.</li>
+        <li><strong>Contributed talks and posters</strong>Methods, datasets and ideas that cross the two fields.</li>
+        <li><strong>Open discussion</strong>Shared tasks, benchmarks and the collaborations that come next.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="organisers">
+    <div class="wrap">
+      <h3>Organisers</h3>
+      <ul>
+        <li><b>Jules Cauzinille</b>Earth Species Project</li>
+        <li><b>Ines Nolasco</b>Earth Species Project</li>
+        <li><b>Paul Best</b>Austrian Academy of Sciences</li>
+        <li><b>Aditya Bhattacharjee</b>Queen Mary University of London</li>
+        <li><b>Christos Plachouras</b>Queen Mary University of London</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>MuPAS · Musical Perspectives on Animal Sounds</span>
+    <span>A satellite workshop of ISMIR</span>
+  </div>
+</footer>
+
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
+
+  // Reveal on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(n => io.observe(n));
+
+  // Hero: a birdsong-like pitch trace drawn over a musical staff
+  (function drawScore() {
+    const svg = document.getElementById('score');
+    const W = 1000, H = 260;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+    const staff = el('g', { class: 'staff' });
+    for (let i = 0; i < 5; i++) {
+      const y = 50 + i * 40;
+      staff.appendChild(el('line', { x1: 0, x2: W, y1: y, y2: y, 'vector-effect': 'non-scaling-stroke' }));
+    }
+    svg.appendChild(staff);
+
+    // Deterministic pseudo-random syllables: arches, sweeps, trills and whistles
+    let s = 7;
+    const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+    const syllables = [];
+    let x = 10;
+    while (x < W - 30) {
+      const w = 30 + rnd() * 70;
+      const kind = rnd();
+      const base = 90 + rnd() * 100;
+      const amp = 30 + rnd() * 25;
+      const pts = [];
+      for (let i = 0; i <= 24; i++) {
+        const t = i / 24;
+        let y;
+        if (kind < 0.35) y = base - amp * Math.sin(Math.PI * t);
+        else if (kind < 0.65) y = base + 40 - 80 * t;
+        else if (kind < 0.85) y = base + 10 * Math.sin(t * Math.PI * 8);
+        else y = base - 20 + 40 * t * t;
+        pts.push([x + t * w, Math.max(30, Math.min(H - 20, y))]);
+      }
+      syllables.push(pts);
+      x += w + 14 + rnd() * 30;
+    }
+
+    syllables.forEach((pts, i) => {
+      const d = pts.map((p, j) => (j ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('');
+      const harm = el('path', { d, class: 'contour harm', transform: 'translate(0,-26)', 'vector-effect': 'non-scaling-stroke' });
+      const main = el('path', { d, class: 'contour', 'vector-effect': 'non-scaling-stroke' });
+      [harm, main].forEach(p => {
+        svg.appendChild(p);
+        p.style.setProperty('--len', p.getTotalLength() + 2);
+        p.style.animationDelay = (i * 0.09) + 's';
+      });
+    });
+  })();
+</script>
+</body>
+</html>
