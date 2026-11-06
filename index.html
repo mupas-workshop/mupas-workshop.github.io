@@ -62,9 +62,9 @@
     margin: 24px 0 0; max-width: 40ch; color: var(--ink-soft);
   }
 
-  .score { position: relative; background: var(--tint); margin-top: 64px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .score { position: relative; background: var(--tint); margin-top: 64px; }
   #score { width: 100%; height: 260px; display: block; }
-  .clef { position: absolute; left: 24px; fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+  .clef { position: absolute; left: 24px; fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
   .clef circle { fill: var(--ink); stroke: none; }
   .staff line { stroke: rgba(22, 24, 29, 0.24); stroke-width: 1; }
   .contour { fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; }
@@ -161,8 +161,8 @@
       <svg id="score" preserveAspectRatio="none"></svg>
       <!-- Treble clef in staff units: lines at y = 0, 10, 20, 30, 40; the curl wraps the G line (y = 30) -->
       <svg class="clef" viewBox="0 -16 28 74">
-        <path d="M17 30C12.5 30.5 11.5 25 15.5 23.5C21 22 24.5 29 20.5 34C16 39 6 37 5.5 28.5C5 20 13 15 18 9C22 4 22 -11 17.5 -11C13 -11 12.5 -1 13.5 6L17.5 47C18 53 11.5 54 10.5 50"/>
-        <circle cx="12" cy="49" r="2.6"/>
+        <path vector-effect="non-scaling-stroke" d="M15.5 31C11.5 31.5 10.5 26.5 14 25.5C18.5 24.2 21.5 28.5 20.5 33C19.5 38 13.5 40.5 9 38C3.5 35 3 27 8.5 21C12.5 16.5 18 13 20 6C21.5 0 20 -9.5 16.5 -10.5C13.5 -11.5 12 -6 12.3 -1C12.5 4 13.5 8 14.2 13L17.8 46.5C18.4 52 14.5 54.5 11 53"/>
+        <circle cx="11.5" cy="50.5" r="1.6"/>
       </svg>
     </div>
   </div>
