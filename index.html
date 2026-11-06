@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Music&text=%F0%9D%84%9E&display=block" rel="stylesheet">
 <style>
   :root {
     --bg: #ffffff;
@@ -65,8 +64,8 @@
 
   .score { position: relative; background: var(--tint); margin-top: 64px; }
   #score { width: 100%; height: 260px; display: block; }
-  .clef { position: absolute; left: 24px; overflow: visible; }
-  .clef text { font-family: "Noto Music", serif; fill: var(--ink); stroke: none; }
+  .clef { position: absolute; left: 24px; overflow: visible; fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .clef circle { fill: var(--ink); stroke: none; }
   .staff line { stroke: rgba(22, 24, 29, 0.24); stroke-width: 1; }
   .contour { fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; }
   .contour.harm { stroke: var(--accent); stroke-width: 1.4; opacity: .75; }
@@ -160,9 +159,10 @@
     </div>
     <div class="score" aria-hidden="true">
       <svg id="score" preserveAspectRatio="none"></svg>
-      <!-- Treble clef in staff units: lines at y = 0, 10, 20, 30, 40; the font puts its baseline on the bottom line and 1em = staff height, so the curl wraps G (y = 30) -->
+      <!-- Treble clef in staff units: lines at y = 0, 10, 20, 30, 40; a single-weight line traced over an engraved clef; the curl wraps the G line (y = 30) -->
       <svg class="clef" viewBox="0 -16 30 74">
-        <text x="1" y="40" font-size="40">&#x1D11E;</text>
+        <path vector-effect="non-scaling-stroke" d="M15.2 34C12 33 10.5 30 11.7 27C13 23 18 20.5 22 22.5C25.5 24.5 27 28 26.5 30.5C25.5 35.5 21 38 15.5 38C9.5 38 4.5 34 4.6 28.5C4.8 22 8.5 15 13.5 10C18.5 5 22.5 0 21.8 -6C21.3 -10.5 19.5 -13 18.2 -12.8C15.5 -12.5 13.2 -8 13 -2C12.8 6 16 20 17 28L19.4 46C20 51 19 54.5 16 54.6C13.5 54.7 12 53 12 51.5"/>
+        <circle cx="13.2" cy="50.4" r="1.5"/>
       </svg>
     </div>
   </div>
