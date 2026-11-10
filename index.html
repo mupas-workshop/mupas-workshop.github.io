@@ -42,7 +42,7 @@
   header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
   .mark { font: 400 16px/1.2 var(--display); text-decoration: none; color: var(--ink-soft); }
   .mark b { font-weight: 600; color: var(--ink); letter-spacing: -0.01em; margin-right: 10px; }
-  nav { display: flex; gap: 28px; font-family: var(--display); }
+  nav { display: flex; flex-wrap: wrap; gap: 28px; font-family: var(--display); }
   nav a { font-size: 14.5px; text-decoration: none; color: var(--ink-soft); }
   nav a:hover { color: var(--ink); }
 
@@ -105,6 +105,14 @@
   .prose p { color: var(--ink-soft); margin: 0 0 18px; max-width: 60ch; }
   .prose p.lead { font: 400 21px/1.45 var(--display); color: var(--ink); letter-spacing: -0.01em; margin-bottom: 24px; }
 
+  .newsletter-link {
+    display: inline-block; margin-top: 8px; padding: 12px 18px;
+    background: var(--accent); color: #fff; font: 500 15px/1.3 var(--display);
+    text-decoration: none; border-radius: 2px;
+  }
+  .newsletter-link:hover { background: #0e8065; }
+  .newsletter-link:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
   /* Organisers */
   .organisers { padding: 48px 0; background: var(--tint); border-top: 1px solid var(--rule); }
   .organisers .wrap { display: flex; gap: 32px; align-items: baseline; flex-wrap: wrap; }
@@ -146,6 +154,7 @@
       <a href="#about">About</a>
       <a href="#intersection">Intersection</a>
       <a href="#programme">Programme</a>
+      <a href="#newsletter">Newsletter</a>
     </nav>
   </div>
 </header>
@@ -228,6 +237,24 @@
         <li><strong>Contributed talks and posters</strong>Methods, datasets and ideas that cross the two fields.</li>
         <li><strong>Open discussion</strong>Shared tasks, benchmarks and the collaborations that come next.</li>
       </ul>
+    </div>
+  </section>
+
+  <section id="newsletter">
+    <div class="wrap grid reveal">
+      <div>
+        <svg class="icon" viewBox="0 0 64 44" aria-hidden="true">
+          <rect x="7" y="10" width="38" height="25" rx="2"/>
+          <path d="M8 12L26 26L44 12"/>
+        </svg>
+        <p class="num">04</p>
+        <h2>Stay in the loop</h2>
+      </div>
+      <div class="prose">
+        <p class="lead">Get updates about the MuPAS workshop.</p>
+        <p>Subscribe to our newsletter for the latest news and announcements, and signal your interest for giving a presentation or simply attend the event.</p>
+        <a class="newsletter-link" href="http://tinyurl.com/amuswkshp" target="_blank" rel="noopener noreferrer">Subscribe to the newsletter</a>
+      </div>
     </div>
   </section>
 
